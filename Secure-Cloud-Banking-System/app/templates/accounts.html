@@ -1,0 +1,20 @@
+{% extends "layouts/app_base.html" %}
+
+{% block title %}Accounts - Secure Bank{% endblock %}
+{% block page_title %}Accounts{% endblock %}
+{% block page_subtitle %}Your account summary{% endblock %}
+{% block top_right %}{{ now }}{% endblock %}
+
+{% block content %}
+  <div class="card pad">
+    <h2 class="h2-mb-lg">Account summary</h2>
+    <div class="grid gap-2">
+      <div class="card pad card-inner">
+        <div class="muted text-xs">Account #{{ account_number | default('—') }}</div>
+        <div class="balance-value">${{ balance | default('0.00') }}</div>
+        <p class="muted m-0 text-sm">{{ account_type | default('Savings') }}</p>
+      </div>
+    </div>
+    <p class="back-mt-lg"><a href="{{ url_for('dashboard.index') }}" class="muted link-plain">← Back to Dashboard</a></p>
+  </div>
+{% endblock %}

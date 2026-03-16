@@ -1,0 +1,47 @@
+<html><head></head><body>{% extends "layouts/app_base.html" %}
+
+{% block title %}Deposit - Secure Bank{% endblock %}
+{% block page_title %}Deposit{% endblock %}
+{% block page_subtitle %}Add funds to your account{% endblock %}
+{% block top_right %}{{ now }}{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <div class="panel-head deposit">
+      <div class="row">
+        <div>
+          <h2><i class="bi bi-download"></i> Deposit</h2>
+          <p>Add funds to your account</p>
+        </div>
+        <div class="panel-balance">
+          <div class="label">Available Balance</div>
+          <div class="value">${{ balance | default('5000.00') }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <form class="form" method="POST" action="{{ url_for('transactions.deposit') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="field">
+          <label>Amount (USD)</label>
+          <input class="input" type="number" name="amount" placeholder="0.00" step="0.01" min="0.01" required="">
+        </div>
+        <div class="field">
+          <label>Payment Method</label>
+          <select class="select" name="method">
+            <option value="cash">Cash</option>
+            <option value="bank_transfer">Bank transfer</option>
+            <option value="card">Card</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Description (optional)</label>
+          <input class="input" type="text" name="description" placeholder="Add a note...">
+        </div>
+        <button class="btn primary" type="submit">Continue</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+</body></html>
