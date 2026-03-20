@@ -1,33 +1,33 @@
 // Common Banking App JS - AJAX Connectivity & Dynamic UX
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   console.log('Banking App JS loaded');
 
   // Live balance update (poll every 10s if element exists)
   function updateBalance() {
     const balanceEl = document.querySelector('.panel-balance .value');
     if (!balanceEl) return;
-    fetch('/api/balance', { 
+    fetch('/api/balance', {
       method: 'GET',
       credentials: 'same-origin',
       headers: { 'X-Requested-With': 'XMLHttpRequest' }
     })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success && data.balance !== undefined) {
-        balanceEl.textContent = `$${Number(data.balance).toLocaleString('en-US', { 
-          minimumFractionDigits: 2, 
-          maximumFractionDigits: 2 
-        })}`;
-      }
-    })
-    .catch(err => console.error('Balance update error:', err));
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.balance !== undefined) {
+          balanceEl.textContent = `$${Number(data.balance).toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })}`;
+        }
+      })
+      .catch(err => console.error('Balance update error:', err));
   }
   updateBalance();
   setInterval(updateBalance, 10000);
 
   // AJAX form submits (add 'ajax-form' class to forms)
   document.querySelectorAll('.ajax-form').forEach(form => {
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Real-time input validation for amounts
   document.querySelectorAll('input[name="amount"]').forEach(input => {
-    input.addEventListener('input', function() {
+    input.addEventListener('input', function () {
       const value = parseFloat(this.value);
       if (isNaN(value) || value <= 0) {
         this.setCustomValidity('Please enter a valid positive amount');
@@ -81,11 +81,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Account number format helper (e.g., XXXX-XXXX-XXXX)
   document.querySelectorAll('input[name*="account"]').forEach(input => {
-    input.addEventListener('input', function() {
+    input.addEventListener('input', function () {
       let val = this.value.replace(/[^0-9]/g, '');
-      if (val.length >= 4) val = val.slice(0,4) + '-' + val.slice(4,8) + '-' + val.slice(8,12);
-      else if (val.length >= 8) val = val.slice(0,4) + '-' + val.slice(4);
-      this.value = val.slice(0,13);
+      if (val.length >= 4) val = val.slice(0, 4) + '-' + val.slice(4, 8) + '-' + val.slice(8, 12);
+      else if (val.length >= 8) val = val.slice(0, 4) + '-' + val.slice(4);
+      this.value = val.slice(0, 13);
     });
   });
 });

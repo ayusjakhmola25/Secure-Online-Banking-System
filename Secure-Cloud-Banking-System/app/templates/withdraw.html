@@ -6,32 +6,32 @@
 {% block top_right %}{{ now }}{% endblock %}
 
 {% block content %}
-  <div class="card">
-    <div class="panel-head withdraw">
-      <div class="row">
-        <div>
-          <h2><i class="bi bi-upload"></i> Withdraw</h2>
-          <p>Withdraw funds from your account</p>
-        </div>
-        <div class="panel-balance">
-          <div class="label">Available Balance</div>
-          <div class="value">${{ balance | default('5000.00') }}</div>
-        </div>
+<div class="card">
+  <div class="panel-head withdraw">
+    <div class="row">
+      <div>
+        <h2><i class="bi bi-upload"></i> Withdraw</h2>
+        <p>Withdraw funds from your account</p>
+      </div>
+      <div class="panel-balance">
+        <div class="label">Available Balance</div>
+        <div class="value">${{ balance | default('5000.00') }}</div>
       </div>
     </div>
-    <div class="panel-body">
-      <form class="form" method="POST" action="{{ url_for('transactions.withdraw') }}">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <div class="field">
-          <label>Amount (USD)</label>
-          <input class="input" type="number" name="amount" placeholder="0.00" step="0.01" min="0.01" required>
-        </div>
-        <div class="field">
-          <label>Description (optional)</label>
-          <input class="input" type="text" name="description" placeholder="Add a note...">
-        </div>
-        <button class="btn primary" type="submit">Withdraw</button>
-      </form>
-    </div>
   </div>
+  <div class="panel-body">
+    <form class="form" method="POST" action="{{ url_for('transactions.withdraw') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="field">
+        <label>Amount (USD)</label>
+        <input class="input" type="number" name="amount" placeholder="0.00" step="0.01" min="0.01" required>
+      </div>
+      <div class="field">
+        <label>Description (optional)</label>
+        <input class="input" type="text" name="description" placeholder="Add a note...">
+      </div>
+      <button class="btn primary" type="submit">Withdraw</button>
+    </form>
+  </div>
+</div>
 {% endblock %}

@@ -4,36 +4,36 @@
 
 <div class="card">
 
-<div class="panel-head deposit">
-<h2>Deposit</h2>
-<p>Add funds to your account</p>
-</div>
+    <div class="panel-head deposit">
+        <h2>Deposit</h2>
+        <p>Add funds to your account</p>
+    </div>
 
-<div class="panel-body">
+    <div class="panel-body">
 
-<div class="summary-box">
-<div>Type</div>
-<div>Deposit</div>
-</div>
+        <div class="summary-box">
+            <div>Type</div>
+            <div>Deposit</div>
+        </div>
 
-<div class="summary-box">
-<div>Amount</div>
-<div>${{ amount }}</div>
-</div>
+        <div class="summary-box">
+            <div>Amount</div>
+            <div>${{ amount }}</div>
+        </div>
 
-<form method="POST" action="{{ url_for('transactions.deposit_confirm') }}">
+        <form method="POST" action="{{ url_for('transactions.deposit_confirm') }}">
 
-<input type="hidden" name="amount" value="{{ amount }}">
+            <input type="hidden" name="amount" value="{{ amount }}">
 
-<button class="btn primary">
-Confirm Deposit
-</button>
+            <button class="btn primary">
+                Confirm Deposit
+            </button>
 
-</form>
+        </form>
 
-<a href="{{ url_for('transactions.deposit') }}">Back</a>
+        <a href="{{ url_for('transactions.deposit') }}">Back</a>
 
-</div>
+    </div>
 
 </div>
 

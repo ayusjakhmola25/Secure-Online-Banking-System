@@ -1,11 +1,15 @@
-<html><head></head><body>{% extends "layouts/app_base.html" %}
+<html>
 
-{% block title %}Deposit - Secure Bank{% endblock %}
-{% block page_title %}Deposit{% endblock %}
-{% block page_subtitle %}Add funds to your account{% endblock %}
-{% block top_right %}{{ now }}{% endblock %}
+<head></head>
 
-{% block content %}
+<body>{% extends "layouts/app_base.html" %}
+
+  {% block title %}Deposit - Secure Bank{% endblock %}
+  {% block page_title %}Deposit{% endblock %}
+  {% block page_subtitle %}Add funds to your account{% endblock %}
+  {% block top_right %}{{ now }}{% endblock %}
+
+  {% block content %}
   <div class="card">
     <div class="panel-head deposit">
       <div class="row">
@@ -42,6 +46,8 @@
       </form>
     </div>
   </div>
-{% endblock %}
+  {% endblock %}
 
-</body></html>
+</body>
+
+</html>
