@@ -159,6 +159,6 @@ We welcome visionary developers to improve the cloud banking ecosystem!
 
 If this project impressed you, please leave a ⭐ on the repository!  
 
-*Because seriously... mtlb jo bhi dekhe bole kya lagra hai! 🔥*
+🔥
 
 </div>
